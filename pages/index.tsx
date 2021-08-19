@@ -3,17 +3,22 @@ import Image from 'next/image'
 
 import styles from './index.module.css'
 import Layout from '../components/Layout'
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import {
+	GetStaticProps,
+	InferGetStaticPropsType,
+	GetServerSideProps,
+	InferGetServerSidePropsType,
+} from 'next'
 import test from '../public/222.jpg'
 
-function Home({ dog }: InferGetStaticPropsType<typeof getStaticProps>) {
+function Home({ dog }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 	console.log(dog)
 	return (
 		<Layout>
 			<Head>
-				<title>First Post</title>
+				<title>Home</title>
 			</Head>
-			<p className={`text-purple-600 ${styles.container}`}>{dog}</p>
+			{/* <p className={`text-purple-600 ${styles.container}`}>{dog}</p> */}
 			<Image src={dog} alt='' width={500} height={500} />
 		</Layout>
 	)
@@ -28,16 +33,16 @@ function Home({ dog }: InferGetStaticPropsType<typeof getStaticProps>) {
 // 数据可以公开缓存（不是特定于用户的）。
 // 页面必须预渲染（用于 SEO）并且非常快——getStaticProps生成 HTML 和 JSON 文件，这两个文件都可以由 CDN 缓存以提高性能。
 
-export const getStaticProps: GetStaticProps = async context => {
-	const res = await fetch('https://dog.ceo/api/breeds/image/random')
-	const json = await res.json()
+// export const getStaticProps: GetStaticProps = async context => {
+// 	const res = await fetch('https://dog.ceo/api/breeds/image/random')
+// 	const json = await res.json()
 
-	return {
-		props: {
-			dog: json.message,
-		},
-	}
-}
+// 	return {
+// 		props: {
+// 			dog: json.message,
+// 		},
+// 	}
+// }
 
 // 构建时获取数据【页面-路径-依赖于外部数据】
 // - 只能从页面导出
@@ -54,15 +59,17 @@ export const getStaticProps: GetStaticProps = async context => {
 // 	}
 // }
 
-// 请求时获取数据
-// export async function getServerSideProps(context) {
-// 	console.log('context', context)
-// 	return {
-// 		props: {
-// 			// props for your component
-// 			dog: 'https://images.dog.ceo/breeds/terrier-lakeland/n02095570_4331.jpg',
-// 		},
-// 	}
-// }
+// 在页面请求时获取数据
+export const getServerSideProps: GetServerSideProps = async context => {
+	// console.log('context', context)
+	const res = await fetch('https://dog.ceo/api/breeds/image/random')
+	const json = await res.json()
+	return {
+		props: {
+			// props for your component
+			dog: json.message,
+		},
+	}
+}
 
 export default Home

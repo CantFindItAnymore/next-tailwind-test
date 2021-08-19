@@ -1,0 +1,17 @@
+{
+	"intro": {
+		"welcome": "欢迎, {{username}}!",
+		"text": "我希望你觉得有用.",
+		"description": "这个案例示范了如何国际化SSR/SSG"
+	},
+	"dashboard": {
+		"description": "客户端懒加载国际化"
+	},
+	"warning": "小心: {{birds}}",
+	"birds": {
+		"other": "鸟（复数）",
+		"one": "一只鸟",
+		"two": "两只鸟",
+		"few": "很多鸟"
+	}
+}
