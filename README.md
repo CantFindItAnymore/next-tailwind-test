@@ -7,3 +7,11 @@
 
 - create-next-app
 - tailwindcss
+
+### TODO
+
+- ~~ts~~
+- ~~tailwind~~
+- ~~i18n~~
+- antd
+- echart
