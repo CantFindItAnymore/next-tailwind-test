@@ -1,18 +1,19 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
+import { useI18n } from 'next-localization'
 import styles from './index.module.css'
 import Layout from '../components/Layout'
+import Link from 'next/link'
 import {
 	GetStaticProps,
 	InferGetStaticPropsType,
 	GetServerSideProps,
 	InferGetServerSidePropsType,
 } from 'next'
-import test from '../public/222.jpg'
 
 function Home({ dog }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-	console.log(dog)
+	const i18n = useI18n()
 	return (
 		<Layout>
 			<Head>
@@ -20,6 +21,11 @@ function Home({ dog }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 			</Head>
 			{/* <p className={`text-purple-600 ${styles.container}`}>{dog}</p> */}
 			<Image src={dog} alt='' width={500} height={500} />
+			<div>
+				<Link href='/i18ntest'>
+					<a>{i18n.t('i18n')}</a>
+				</Link>
+			</div>
 		</Layout>
 	)
 }
