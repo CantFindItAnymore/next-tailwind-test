@@ -27,8 +27,8 @@ function Home({ dog }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 				</Link>
 			</div>
 			<div>
-				<Link href='/antd'>
-					<a>{i18n.t('antd')}</a>
+				<Link href='/carouselPage'>
+					<a>{i18n.t('carouselPage')}</a>
 				</Link>
 			</div>
 		</Layout>
