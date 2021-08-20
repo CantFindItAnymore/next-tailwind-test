@@ -13,5 +13,5 @@
 - ~~ts~~
 - ~~tailwind~~
 - ~~i18n~~
-- antd
+- ~~carousel~~
 - echart

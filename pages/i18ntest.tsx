@@ -18,12 +18,12 @@ export default function i18ntest() {
 			</h1>
 			<div>当前语言： {router.locale}</div>
 			<div>
-				<Link href='/i18ntest' locale='en'>
+				<Link href='/i18ntest' replace locale='en'>
 					<a>english</a>
 				</Link>
 			</div>
 			<div>
-				<Link href='/i18ntest' locale='zh'>
+				<Link href='/i18ntest' replace locale='zh'>
 					<a>中文</a>
 				</Link>
 			</div>
