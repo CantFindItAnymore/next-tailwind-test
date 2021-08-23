@@ -31,6 +31,11 @@ function Home({ dog }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 					<a>{i18n.t('carouselPage')}</a>
 				</Link>
 			</div>
+			<div>
+				<Link href='/china'>
+					<a>{i18n.t('chinaMap')}</a>
+				</Link>
+			</div>
 		</Layout>
 	)
 }
